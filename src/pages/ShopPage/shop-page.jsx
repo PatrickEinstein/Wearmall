@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ShopData from './shopdata';
-import CollectionsItems from '../../components/collections/CollectionsItems';
+import Preview from '../../components/collections/preview';
 
 class ShopPage extends React.Component{
     constructor(props) {
@@ -19,15 +19,13 @@ class ShopPage extends React.Component{
     return (
       <div className='shop-page'>
         {
-          collections.map(({ id, ...collections }) => (<CollectionsItems key={id} {...collections} />) )
+         collections.map(({ id, ...collections }) => ( <div key ={id}> <Preview {...collections} /> </div> ))
         }
-      </div>
-
+     </div>
     ) 
   }
 }
 
-console.log(ShopData);
 
 
 export default ShopPage;
