@@ -1,0 +1,31 @@
+.content {
+    height: 90px;
+    padding: 0 25px;
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+    border: 1px solid black;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.content:hover{
+    background-color: rgb(54, 155, 180);
+    opacity:0.8;
+    transform:scale(2.0);
+    transition: 4s;
+}
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 22px;
+      color: #4a4a4a;
+    }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 16px;
+    }
+  
