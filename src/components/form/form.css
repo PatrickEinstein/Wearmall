@@ -1,0 +1,46 @@
+.form {
+  position: relative;
+  margin: 45px 0;
+}
+  
+.input {
+    background: none;
+    background-color: white;
+    color: grey;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid grey;
+    margin: 25px 0;
+    
+  }
+    
+.input:focus {
+      outline: none;
+      background-color: rgba(240, 226, 236, 1.0);
+      color: black;
+      font-size: medium;
+      font-weight: bold;
+      transform: translate(0px, 30px);
+    transition: 1000ms ease all;
+    }
+
+input[type='password'] {
+    letter-spacing: 0.3em;
+  }
+
+.form-label {
+    color:grey;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 15px;
+ 
+  }
+
+
