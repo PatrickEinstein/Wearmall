@@ -7,9 +7,8 @@ const FormInput = ({handleChange, label, ...others}) => (
         <input className='input' onChange={handleChange} {...others}/>
 
         {
-            label ?
-                (
-                <label className='form-label'>
+            label ? (
+                <label className = 'label'>
                     { label }
                 </label>
                 )
@@ -20,8 +19,7 @@ const FormInput = ({handleChange, label, ...others}) => (
    </div> 
 );
 
-
+//{`${others.value.length ? 'shrink' : ''}label`}
 export default FormInput;
 
 
-//{`${others.value.length ? 'shrink' : ''}label`}

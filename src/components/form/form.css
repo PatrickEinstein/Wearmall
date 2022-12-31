@@ -31,15 +31,14 @@
 input[type='password'] {
     letter-spacing: 0.3em;
   }
-
-.form-label {
+.label {
     color:grey;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     left: 5px;
-    top: 15px;
+    top: 0px;
  
   }
 

@@ -7,6 +7,8 @@ import FormInput from '../form/form';
 
 import Button from '../button/button';
 
+import signInWithGoogle from '../collectionitems/firebase/firebase.utils';
+
 class SignIn extends React.Component{
     constructor(props) {
         super(props);
@@ -38,6 +40,7 @@ class SignIn extends React.Component{
                 <span> Sign in with email and password </span>
 
                 <form onSubmit={this.handleSubmit}>
+
                     <FormInput
                         type='email'
                         name='email'
@@ -58,9 +61,11 @@ class SignIn extends React.Component{
                         label='Password'
                     />
 
-
-                    <Button type='submit'Children='Sign in'></Button>
-
+                    <div className='clicks'>
+                        <Button type='submit' Children='Sign in'></Button>
+                        <Button className='google' onClick={signInWithGoogle} Children=' Sign In With Google'>{''}{''}</Button>
+                    </div>
+                    
 
                 </form>
                 
