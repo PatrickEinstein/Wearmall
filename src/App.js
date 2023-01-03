@@ -6,10 +6,10 @@ import { BrowserRouter, Routes, Route, Link, Switch } from 'react-router-dom'
 import { ReactComponent as Logo} from './assets/assets.svg';
 import './components/header/header.css';
 import SignInSignUp from './pages/sing-in-and-sign-up/sign-in-and-sign-up';
-import { auth } from './components/collectionitems/firebase/firebase.utils';
-import signInWithGoogle from './components/collectionitems/firebase/firebase.utils';
+import { auth, createUserData } from './components/collectionitems/firebase/firebase.utils';
 import { render } from '@testing-library/react';
 import React from 'react';
+import signInWithGoogle from './components/collectionitems/firebase/firebase.utils';
 import { SignOut } from './components/collectionitems/firebase/firebase.utils';
 
 class App extends React.Component{
@@ -28,10 +28,10 @@ class App extends React.Component{
 
 
   componentDidMount() {
-   this.unsubscribeFromAuth =  auth.onAuthStateChanged(
-      (user) => { this.setState({ currentUser: user }); console.log(user); }
-    )
-  }
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+        createUserData(user);
+      });
+   }
     
   componentWillUnmount() {
     this.unsubscribeFromAuth();

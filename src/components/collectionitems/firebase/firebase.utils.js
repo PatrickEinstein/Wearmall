@@ -1,35 +1,13 @@
-/* import firebase from 'firebase/app';
-import 'firebase/firestore'
-import 'firebase/auth'
-
-
-const Config = {
-  apiKey: "AIzaSyD_vzuIM3Y5ZP4IKDabDeFW713r4ALMJrc",
-  authDomain: "project0-9181a.firebaseapp.com",
-    projectId: "project0-9181a",
-    storageBucket: "project0-9181a.appspot.com",
-    messagingSenderId: "305384132747",
-    appId: "1:305384132747:web:a9109535c8ae23dfd3c48e",
-    measurementId: "G-V8LGCL8H07"
-};
-
-firebase.initializeApp(Config);
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-const provider = new GoogleAuthProvider();
-provider.setCostomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => (auth.signInWithPopup(provider));
-
-
-
-
-export default firebase;
-
-*/
+//fetch the signInWithGoogle API for sign in and sign out
 
 import { getAuth, signInWithPopup, GoogleAuthProvider,signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
+
+//To query the database
+import { getDoc, collection, doc, setDoc, Firestore , getFirestore, addDoc, DocumentReference, CollectionReference } from "firebase/firestore";
+import { useParams } from "react-router-dom";
+import { useRef } from "react";
+
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -43,6 +21,9 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
 const provider = new GoogleAuthProvider();
 //provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 provider.setCustomParameters({ prompt: 'select_account' });
@@ -77,8 +58,48 @@ signOut(auth)
 }).catch((error) => {
   // An error happened.
 });
-const signInWithGoogle = () => (signInWithPopup(auth, provider));
+const signInWithGoogle = () => { signInWithPopup(auth, provider) };
 
 export const SignOut = () => (signOut(auth));
 
 export default signInWithGoogle;
+
+
+ 
+//To query the database
+
+export const createUserData = async (userAuth, otherdata) => {
+  if (!userAuth) return;
+  
+    const useRef = doc(db, `users/${userAuth.uid}`);
+    const snapShot = await getDoc(useRef);
+    console.log(snapShot.data());
+  
+    
+    if (snapShot.exists() == false) {
+      
+      const { email, displayName , uid } = userAuth;
+      const time = new Date();
+   
+      const newUser = {
+        displayName,
+        email,
+        time,
+        uid,
+        ...otherdata
+      };
+     
+         try {
+    
+          await setDoc(useRef, newUser);
+          console.log('user successfully added');
+    
+        } catch (error) {
+        
+          console.log(error);
+        }
+  }; 
+  return useRef;
+
+};
+

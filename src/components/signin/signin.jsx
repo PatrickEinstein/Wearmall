@@ -63,7 +63,7 @@ class SignIn extends React.Component{
 
                     <div className='clicks'>
                         <Button type='submit' Children='Sign in'></Button>
-                        <Button className='google' onClick={signInWithGoogle} Children=' Sign In With Google'>{''}{''}</Button>
+                        <Button className='google' onClick={signInWithGoogle} Children=' Sign In With Google'> {' '}{''}</Button>
                     </div>
                     
 
