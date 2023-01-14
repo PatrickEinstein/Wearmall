@@ -1,42 +1,41 @@
-.signin{
-    width: 40vw;
-    display: flex;
-    flex-direction: column;
-}
-
-
-.google{
-    background-color: blue;
-    border:0 solid white;
+.signin {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
 }
 
 .google {
-    min-width: 165px;
-    width: auto;
-    height: 50px;
-    letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 10px 0 10px;
-    font-size: 15px;
-    background-color: rgb(142, 130, 209);
-    color: white;
-    text-transform: uppercase;
-    font-family: 'Open Sans Condensed';
-    font-weight: bolder;
-    border: none;
-    cursor: pointer;
-    display:flex;
-  }
-  
-.google:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-    border-radius: 25px;
+  background-color: blue;
+  border: 0 solid white;
 }
 
-  .clicks{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.google {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 10px 0 10px;
+  font-size: 15px;
+  background-color: rgb(142, 130, 209);
+  color: white;
+  text-transform: uppercase;
+  font-family: "Open Sans Condensed";
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.google:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.clicks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
