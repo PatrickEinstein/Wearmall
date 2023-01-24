@@ -19,6 +19,7 @@ import { getDoc } from "firebase/firestore";
 import { async } from "@firebase/util";
 import { db } from "./components/collectionitems/firebase/firebase.utils";
 import { doc } from "firebase/firestore";
+import ContactForm from "./components/contact-form/contact-form";
 
 class App extends React.Component {
   constructor(props) {
@@ -103,6 +104,7 @@ class App extends React.Component {
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/shop" element={<ShopPage />} />
           <Route exact path="/signin" element={<SignInSignUp />} />
+          <Route exact path="/contact" element={<ContactForm />} />
         </Routes>
       </BrowserRouter>
     );

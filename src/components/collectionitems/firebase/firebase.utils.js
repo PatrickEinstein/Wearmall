@@ -15,6 +15,7 @@ import {
   doc,
   setDoc,
   Firestore,
+  addDoc,
   getFirestore,
 } from "firebase/firestore";
 
@@ -43,7 +44,7 @@ provider.setCustomParameters({ prompt: "select_account" });
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 
-signInWithPopup(auth, provider)
+signInWithPopup()
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -104,4 +105,27 @@ export const createUserData = async (userAuth, ...otherdata) => {
     }
   }
   return userReference;
+};
+
+export const handleSubmit = async (e, comment) => {
+  e.preventDefault();
+  setLoader(true);
+
+  const userReference = doc(db, `users/${comment.uid}`);
+  const userSnapShot = await getDoc(userReference);
+
+  const newComment = {
+    displayName,
+    email,
+    time,
+    uid,
+    ...otherdata,
+  };
+
+  try {
+    await addDoc(newComment, newUserData);
+    console.log("user successfully added");
+  } catch (error) {
+    console.log(error);
+  }
 };
