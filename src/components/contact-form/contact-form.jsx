@@ -1,18 +1,45 @@
 import React, { useState, useEffect } from "react";
 import "./contact-form.css";
-import { handleSubmit } from "../collectionitems/firebase/firebase.utils";
+//import { handleComment } from "../collectionitems/firebase/firebase.utils";
+import {
+  getDoc,
+  collection,
+  doc,
+  setDoc,
+  Firestore,
+  addDoc,
+  getFirestore,
+} from "firebase/firestore";
+import db from "../collectionitems/firebase/firebase.utils";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    const userReference2 = doc(db, `users/Comment`);
+    const [name, email, message] = useState;
+
+    const newComment = {
+      name,
+      email,
+      message,
+    };
+
+    try {
+      await addDoc(newComment, userReference2);
+      console.log("comment successfully added");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="container">
-      <div className="carosel">
-        <h3>Animation here </h3>
-      </div>
-      <form className="contactform app" onSubmit={handleSubmit}>
+      <form className="contactform app">
         <h1>Contact Us 🤳</h1>
 
         <label>Name</label>
@@ -36,7 +63,9 @@ const Contact = () => {
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
 
-        <button>Submit</button>
+        <button type="Submit" onSubmit={handleComment}>
+          Submit
+        </button>
       </form>
     </div>
   );

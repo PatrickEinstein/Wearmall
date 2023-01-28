@@ -20,6 +20,7 @@ import { async } from "@firebase/util";
 import { db } from "./components/collectionitems/firebase/firebase.utils";
 import { doc } from "firebase/firestore";
 import ContactForm from "./components/contact-form/contact-form";
+import Header from "./components/header/header.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -67,38 +68,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="header">
-          <div className="logo-container">
-            <Link to="/">
-              {" "}
-              <Logo className="logo" />{" "}
-            </Link>
-          </div>
-
-          <div className="links">
-            <Link to="/shop" className="links0">
-              {" "}
-              SHOP{" "}
-            </Link>
-            <Link to="/contact" className="links0">
-              {" "}
-              CONTACT{" "}
-            </Link>
-            {this.state.currentUser ? (
-              <div
-                className="links0"
-                onClick={SignOut}
-                style={{ cursor: "pointer" }}
-              >
-                SIGN OUT
-              </div>
-            ) : (
-              <Link to="/signin" className="links0">
-                SIGN IN
-              </Link>
-            )}
-          </div>
-        </div>
+        <Header currentuser={this.state.currentUser} signOut={SignOut} />
 
         <Routes>
           <Route exact path="/" element={<Homepage />} />
