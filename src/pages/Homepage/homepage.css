@@ -3,4 +3,5 @@
    flex-direction: rows;
     align-items: center;
     padding: 10px 10px;
+    position:-webkit-sticky
   }

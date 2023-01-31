@@ -24,13 +24,13 @@ import { useRef } from "react";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD_vzuIM3Y5ZP4IKDabDeFW713r4ALMJrc",
-  authDomain: "project0-9181a.firebaseapp.com",
-  projectId: "project0-9181a",
-  storageBucket: "project0-9181a.appspot.com",
-  messagingSenderId: "305384132747",
-  appId: "1:305384132747:web:a9109535c8ae23dfd3c48e",
-  measurementId: "G-V8LGCL8H07",
+  apiKey: "AIzaSyDGmSLj_h9ZHVRgtymKaKIrlohf15CNVL0",
+  authDomain: "mywearmall.firebaseapp.com",
+  projectId: "mywearmall",
+  storageBucket: "mywearmall.appspot.com",
+  messagingSenderId: "199813145497",
+  appId: "1:199813145497:web:f248d01e7812ddd1376908",
+  measurementId: "G-DC5KZDW650"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

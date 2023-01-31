@@ -21,43 +21,26 @@ import { db } from "./components/collectionitems/firebase/firebase.utils";
 import { doc } from "firebase/firestore";
 import ContactForm from "./components/contact-form/contact-form";
 import Header from "./components/header/header.jsx";
+//import { provider } from "react-redux";
+import {connect} from "react-redux";
+import { setCurrentUser } from "./redux/actions/setcurrentuser";
+import store from "./redux/reducers-stores/store/store";
+
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUser: null,
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const {setCurrentUser} = this.props
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
-        console.log(userAuth); //monitor what the userAuth is like
-
         const userReference = await createUserData(userAuth);
-
-        console.log(userReference); //monitor the userReference created
-
         const userSnap = await getDoc(userReference);
+        setCurrentUser ({ id: userSnap.id, ...userSnap.data() })
+        setCurrentUser(userAuth); 
 
-        console.log(userSnap.data()); //monitor the snapshot created
-
-        this.setState(
-          {
-            currentUser: { id: userSnap.id, ...userSnap.data() },
-          },
-          () => {
-            console.log(this.state);
-          }
-        );
-      } else {
-        this.setState({ currentUser: userAuth });
-        console.log(this.state);
-      }
+      };
+         
     });
   }
 
@@ -67,18 +50,31 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Header currentuser={this.state.currentUser} signOut={SignOut} />
-
-        <Routes>
+      
+      <div>
+        <Header  signOut={SignOut} />
+          <Routes>
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/shop" element={<ShopPage />} />
           <Route exact path="/signin" element={<SignInSignUp />} />
           <Route exact path="/contact" element={<ContactForm />} />
         </Routes>
-      </BrowserRouter>
+      
+      </div>
+        
+
+        
+     
     );
   }
 }
+const mapDispatchToProps =(dispatch)=>({
+setCurrentUser: (user) => dispatch(setCurrentUser(user))
+})
 
-export default App;
+console.log(store.getState());
+
+const unsubscribe =   store.subscribe(() =>
+console.log('State after dispatch: ', store.getState()));
+
+export default connect(null, mapDispatchToProps)(App); 

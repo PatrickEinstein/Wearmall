@@ -3,8 +3,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./header.css";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux";
 
-const Header = ({ currentuser, signOut }) => {
+
+
+const Header = ({currentUser, signOut }) => {
   return (
     <div className="header">
       <div className="logo-container ">
@@ -24,7 +27,7 @@ const Header = ({ currentuser, signOut }) => {
           CONTACT{" "}
         </Link>
 
-        {currentuser ? (
+        {currentUser ? (
           <div
             className="links0"
             onClick={signOut}
@@ -42,4 +45,8 @@ const Header = ({ currentuser, signOut }) => {
   );
 };
 
-export default Header;
+const mapStateToProps =(state ) =>({
+currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
