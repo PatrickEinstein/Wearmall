@@ -2,12 +2,14 @@ import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import {connect} from "react-redux";
 
+import { SignOut } from "../collectionitems/firebase/firebase.utils";
 
 
-const Header = ({currentUser, signOut }) => {
+
+const Header = ({currentUser}) => {
   return (
     <div className="header">
       <div className="logo-container ">
@@ -30,7 +32,7 @@ const Header = ({currentUser, signOut }) => {
         {currentUser ? (
           <div
             className="links0"
-            onClick={signOut}
+            onClick = {SignOut}
             style={{ cursor: "pointer" }}
           >
             SIGN OUT

@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Homepage from "./pages/Homepage/homepage";
 import ShopPage from "./pages/ShopPage/shop-page";
-import { BrowserRouter, Routes, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Switch,Navigate } from "react-router-dom";
 import { ReactComponent as Logo } from "./assets/assets.svg";
 import "./components/header/header.css";
 import SignInSignUp from "./pages/sing-in-and-sign-up/sign-in-and-sign-up";
@@ -14,7 +14,6 @@ import {
 import { render } from "@testing-library/react";
 import React from "react";
 import signInWithGoogle from "./components/collectionitems/firebase/firebase.utils";
-import { SignOut } from "./components/collectionitems/firebase/firebase.utils";
 import { getDoc } from "firebase/firestore";
 import { async } from "@firebase/util";
 import { db } from "./components/collectionitems/firebase/firebase.utils";
@@ -52,11 +51,12 @@ class App extends React.Component {
     return (
       
       <div>
-        <Header  signOut={SignOut} />
+        <Header/>
           <Routes>
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/shop" element={<ShopPage />} />
-          <Route exact path="/signin" element={<SignInSignUp />} />
+          <Route exact path="/signin" 
+          element = {this.props.currentUser ? ( <Navigate to='/' />) : (<SignInSignUp/>)}/>
           <Route exact path="/contact" element={<ContactForm />} />
         </Routes>
       
@@ -64,17 +64,22 @@ class App extends React.Component {
         
 
         
-     
+    
     );
   }
 }
+const mapStateToProps  = ({user}) =>({
+  currentUser: user.currentUser
+});
+
+
 const mapDispatchToProps =(dispatch)=>({
 setCurrentUser: (user) => dispatch(setCurrentUser(user))
-})
+});
 
 console.log(store.getState());
 
 const unsubscribe =   store.subscribe(() =>
 console.log('State after dispatch: ', store.getState()));
 
-export default connect(null, mapDispatchToProps)(App); 
+export default connect(mapStateToProps, mapDispatchToProps)(App); 
