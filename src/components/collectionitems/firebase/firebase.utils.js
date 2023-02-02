@@ -76,7 +76,7 @@ const signInWithGoogle = () => {
   signInWithPopup(auth, provider);
 };
 
-export const SignOut = (auth ) => {signOut(auth)};
+export const SignOut = () => {signOut(auth)};
 
 export default signInWithGoogle;
 

@@ -9,7 +9,7 @@
 }
 
 .logo-container {
-  width: 60%;
+  width: 30%;
 }
 
 .logo {
@@ -23,7 +23,7 @@
   justify-content: space-around;
   align-items: flex-end;
   flex-direction: row;
-  width: 30%;
+  width: 50%;
 }
 
 .links0 {
