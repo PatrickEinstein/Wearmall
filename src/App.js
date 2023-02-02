@@ -24,6 +24,7 @@ import Header from "./components/header/header.jsx";
 import {connect} from "react-redux";
 import { setCurrentUser } from "./redux/actions/setcurrentuser";
 import store from "./redux/reducers-stores/store/store";
+import CheckOutPage from "./pages/checkout-page/checkout-page";
 
 
 class App extends React.Component {
@@ -58,6 +59,7 @@ class App extends React.Component {
           <Route exact path="/signin" 
           element = {this.props.currentUser ? ( <Navigate to='/' />) : (<SignInSignUp/>)}/>
           <Route exact path="/contact" element={<ContactForm />} />
+          <Route exact path="/checkout" element={<CheckOutPage />} />
         </Routes>
       
       </div>

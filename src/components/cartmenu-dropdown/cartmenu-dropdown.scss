@@ -10,7 +10,24 @@
   top: 150px;
   right: 40px;
   z-index: 5;
+  opacity: 0.8;
+  border-radius: 25px;
+  transition: 1000ms;
+&:hover{
+  opacity:0.95;
+  transform: rotateY(20deg);
+  //transform: rotate(-10deg);
+  box-shadow: 1px 1px 1px blue;
+  transition: 100ms;
 
+}
+
+  .empty-cart{
+    position: absolut;
+    top: 400px;
+    right:180;
+    padding:50px;
+  }
   .cart-items {
     height: 240px;
     display: flex;
@@ -18,8 +35,14 @@
     overflow: scroll;
   }
 
-  button {
+  .button {
     margin-top: auto;
     margin-left:10%;
+    
   }
+
+ .links{
+  text-decoration: none;
+  margin-left:20%;
+ }
 }
