@@ -1,9 +1,9 @@
 import React, { Children } from 'react';
 import ReactDOM from 'react-dom';
-import './button.css';
+import './button.scss';
 
-const Button = ({Children, ...otherProps}) => (
-    <button className='button' {...otherProps}> { Children }</button>
+const Button = ({Children,inverted, ...otherProps}) => (
+    <button className={ `${inverted? 'inverted' : ''} button`} {...otherProps}> { Children }</button>
 );
 
 

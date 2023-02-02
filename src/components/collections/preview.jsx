@@ -15,8 +15,8 @@ const Preview = ({ title, items }) => (
                         (items, idx) => (idx < 4)
                     )
                     .map(
-                        ({ id, ...others }) => (
-                            <Collectioncards key={id} {...others} />)
+                        (item) => (
+                            <Collectioncards key={item.id} item={item}/>)
                     )
             }
         </div>

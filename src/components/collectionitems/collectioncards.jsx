@@ -1,21 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./collectioncards.css";
+import "./collectioncards.scss";
+import Button from "../button/button";
+import {connect} from 'react-redux';
+import { addItem } from "../../redux/actions/cart-action";
 
-const Collectioncards = ({ name, imageUrl, price, id }) => (
-  <div className="card">
+const Collectioncards = ({ item , addItem}) => {
+const { name, price, imageUrl} =item;
+
+ return (
+ <div className="card">
     <div
       className="cardpicture"
       style={{ backgroundImage: `url(${imageUrl})` }}
     >
-      <button className="cartbutton">Add to cart</button>
     </div>
 
     <div className="footer">
       <span className="name">{name}</span>
       <span className="price">{price}</span>
     </div>
+  <Button Children = "ADD TO CART" inverted onClick={() => addItem(item)} />
   </div>
-);
+  )
+};
 
-export default Collectioncards;
+
+const mapDispatchToProps = (dispatch) =>({
+addItem : item => dispatch(addItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(Collectioncards);
+ 
