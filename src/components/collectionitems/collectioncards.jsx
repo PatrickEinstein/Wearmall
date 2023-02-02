@@ -9,18 +9,19 @@ const Collectioncards = ({ item , addItem}) => {
 const { name, price, imageUrl} =item;
 
  return (
- <div className="card">
+ <div className="collection-item ">
     <div
-      className="cardpicture"
+      className="image"
       style={{ backgroundImage: `url(${imageUrl})` }}
     >
+    
     </div>
-
-    <div className="footer">
+    
+    <div className="collection-footer">
       <span className="name">{name}</span>
       <span className="price">{price}</span>
     </div>
-  <Button Children = "ADD TO CART" inverted onClick={() => addItem(item)} />
+    <Button Children = "ADD TO CART" inverted onClick={() => addItem(item)} />
   </div>
   )
 };

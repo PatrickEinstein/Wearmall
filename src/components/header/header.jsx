@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import CartItem from "../cart-icon /cart-icon";
 import { SignOut } from "../collectionitems/firebase/firebase.utils";
 import CartDropdown from "../cartmenu-dropdown/cartmenu-dropdown";
+import { ReactComponent as Logo } from '../../assets/assets.svg'
 
 
 
@@ -15,7 +16,8 @@ const Header = ({currentUser, hidden}) => {
     <div className="header">
       <div className="logo-container ">
         <Link to="/" className="links0">
-          <span className="logo">Home</span>
+          <Logo className="logo"/> <br/>
+          <span className="logo">Amazing Grace Stores</span>
         </Link>
       </div>
 
