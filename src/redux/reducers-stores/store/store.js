@@ -6,20 +6,23 @@ import {persistStore, persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import { combineReducers } from '@reduxjs/toolkit';
+import directoryReducer from '../reducers/directory-reducer';
+import shopReducer from '../reducers/shop-reducer';
 
 
 
 const persistConfig ={
   key: 'root',
   storage,
-}
+};
 
 const rootReducer = combineReducers({ 
   user: userReducer,
   filters: filtersReducer,
   cart: CartReducer,
-
-})
+  directory: directoryReducer,
+  shop: shopReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -30,7 +33,7 @@ const store = configureStore({
   middleware: [thunk],
   devTools: process.env.NODE_ENV !== 'production',
   
-})
+});
 
 
 export const persistor = persistStore(store);
