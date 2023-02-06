@@ -32,6 +32,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const {setCurrentUser} = this.props
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userReference = await createUserData(userAuth);
@@ -55,7 +56,7 @@ class App extends React.Component {
         <Header/>
           <Routes>
           <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/shop" element={<ShopPage />} />
+          <Route exact path="/shop/*" element={<ShopPage />} />
           <Route exact path="/signin" 
           element = {this.props.currentUser ? ( <Navigate to='/' />) : (<SignInSignUp/>)}/>
           <Route exact path="/contact" element={<ContactForm />} />
@@ -81,7 +82,7 @@ setCurrentUser: (user) => dispatch(setCurrentUser(user))
 
 console.log(store.getState());
 
-const unsubscribe =   store.subscribe(() =>
+const unsubscribe = store.subscribe(() =>
 console.log('State after dispatch: ', store.getState()));
 
 export default connect(mapStateToProps, mapDispatchToProps)(App); 
