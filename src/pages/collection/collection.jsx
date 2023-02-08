@@ -14,9 +14,18 @@ import { useSelector } from "react-redux";
 
 const CollectionPage = ({collection, collectionId }) => {
     console.log(collection);
+    const {items, id, title} = collection;
+
     return (
              <div className="collection-page">
-            <h1 className="title">{collectionId}</h1>
+            <h1 className="title">{collectionId.toUpperCase()}</h1>
+
+            <div className="items">
+            {
+                items.map(( item ) => (<Collectioncards key ={item.id} item={item}/> ) )
+            }
+            </div>
+
             
             <Outlet />
         </div>
@@ -28,24 +37,3 @@ const mapStateToProps = (state,ownProps)=> ({
 });
 export default connect(mapStateToProps)(CollectionPage);
 
-/*
-
-const mapStateToProps = ( state, ownProps) => ({
-    collection : selectCollection( ownProps.match.params.collectionid)(state)
-});
-*/ /*return (
-    <div className="collection-page">
-    <h2 className="title"> {title} {collectionId}</h2>
-
-<div className="items">
-{ items.map( (item )  => (<Collectioncards key={item.id} item={item}  /> ) )}
-</div>
-
-</div>
-
-);
-
-/*const mapStateToProps = (state,ownProps) => ({
-    collection: selectCollection(ownProps.params.collectionId)(state)
-});
-export default connect(mapStateToProps)(CollectionPage); */
