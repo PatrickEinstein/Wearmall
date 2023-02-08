@@ -1,31 +1,25 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Homepage from "./pages/Homepage/homepage";
 import ShopPage from "./pages/ShopPage/shop-page";
-import { BrowserRouter, Routes, Route, Link, Switch,Navigate } from "react-router-dom";
-import { ReactComponent as Logo } from "./assets/assets.svg";
+import {Routes, Route,Navigate, Router} from "react-router-dom";
 import "./components/header/header.css";
 import SignInSignUp from "./pages/sing-in-and-sign-up/sign-in-and-sign-up";
 import {
   auth,
   createUserData,
 } from "./components/collectionitems/firebase/firebase.utils";
-//import { Signinorout } from './components/collectionitems/firebase/firebase.utils';
-import { render } from "@testing-library/react";
 import React from "react";
-import signInWithGoogle from "./components/collectionitems/firebase/firebase.utils";
 import { getDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
-import { db } from "./components/collectionitems/firebase/firebase.utils";
-import { doc } from "firebase/firestore";
 import ContactForm from "./components/contact-form/contact-form";
 import Header from "./components/header/header.jsx";
-//import { provider } from "react-redux";
 import {connect} from "react-redux";
 import { setCurrentUser } from "./redux/actions/setcurrentuser";
 import store from "./redux/reducers-stores/store/store";
 import CheckOutPage from "./pages/checkout-page/checkout-page";
-
+import CollectionPage from "./pages/collection/collection";
+import { MyRouter } from "./components/routes";
+import TopLevelCollectionPage from "./pages/collection/toplevelcollection";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -54,15 +48,23 @@ class App extends React.Component {
       
       <div>
         <Header/>
-          <Routes>
-          <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/shop/*" element={<ShopPage />} />
+        <Routes>
+          
+          <Route index element={<Homepage />} />
+
+          <Route  path ="/shop">
+              <Route index element ={ <ShopPage />} />
+              <Route path =":collectionId" element ={ <TopLevelCollectionPage/>} />
+          </Route>
+
+
           <Route exact path="/signin" 
           element = {this.props.currentUser ? ( <Navigate to='/' />) : (<SignInSignUp/>)}/>
           <Route exact path="/contact" element={<ContactForm />} />
           <Route exact path="/checkout" element={<CheckOutPage />} />
+        
         </Routes>
-      
+ 
       </div>
         
 
@@ -86,3 +88,24 @@ const unsubscribe = store.subscribe(() =>
 console.log('State after dispatch: ', store.getState()));
 
 export default connect(mapStateToProps, mapDispatchToProps)(App); 
+
+
+/*
+<Routes>
+          
+          <Route index element={<Homepage />} />
+
+          <Route  path ="/shop">
+              <Route index element ={ <ShopPage />} />
+              <Route path =":collectionId" element ={ <CollectionPage/>} />
+          </Route>
+
+
+          <Route exact path="/signin" 
+          element = {this.props.currentUser ? ( <Navigate to='/' />) : (<SignInSignUp/>)}/>
+          <Route exact path="/contact" element={<ContactForm />} />
+          <Route exact path="/checkout" element={<CheckOutPage />} />
+        
+        </Routes>
+
+*/

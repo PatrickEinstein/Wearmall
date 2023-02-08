@@ -26,11 +26,15 @@
     /*transform: rotateY(360deg);*/
     transition: transform 3s;
 }
+
  /* .menu-item:first-child {
     margin-right: 7.5px;
   }
 
   .menu-item:last-child {
     margin-left: 7.5px;
+  }*/
+
+  a{
+    text-decoration: none;
   }
-  */

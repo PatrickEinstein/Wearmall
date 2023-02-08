@@ -4,6 +4,9 @@ import "./collectioncards.scss";
 import Button from "../button/button";
 import {connect} from 'react-redux';
 import { addItem } from "../../redux/actions/cart-action";
+import { selectCollection } from "../../redux/selectors/shop-selector";
+import CollectionPage from "../../pages/collection/collection";
+import { Outlet } from "react-router-dom";
 
 const Collectioncards = ({ item , addItem}) => {
 const { name, price, imageUrl} =item;
@@ -30,6 +33,5 @@ const { name, price, imageUrl} =item;
 const mapDispatchToProps = (dispatch) =>({
 addItem : item => dispatch(addItem(item))
 })
-
 export default connect(null, mapDispatchToProps)(Collectioncards);
  

@@ -6,7 +6,7 @@ const COLLECTION_ID_MAP ={
     sneakers:2,
     jackets:3,
     womens:4,
-    men:5,
+    mens:5,
 };
 
 const selectShop =( state) => ( state.shop);
@@ -18,12 +18,13 @@ export const selectCollections = createSelector(
 
 );
 
-export const selectCollection = (collectionUrlParams)  => (
+export const selectCollection = (collectionUrlParams)  => 
+createSelector(
     [selectCollections],
-    (collections ) => (
+   (collections) => (
         collections.find( 
             (collection) => (collection.id === COLLECTION_ID_MAP[collectionUrlParams])
-             ))
+          )) 
 );
 
  
