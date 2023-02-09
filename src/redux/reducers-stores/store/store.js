@@ -24,19 +24,19 @@ const rootReducer = combineReducers({
   shop: shopReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+//const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: [thunk],
   devTools: process.env.NODE_ENV !== 'production',
   
 });
 
 
-export const persistor = persistStore(store);
+//export const persistor = persistStore(store);
 
 export default store ;
 

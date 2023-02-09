@@ -9,7 +9,7 @@ const TopLevelCollectionPage = () => {
     return(
         <div>
        
-        <CollectionPage params={params} collectionId={collectionId}/>
+        <CollectionPage params={params} collectionId={collectionId}  />
         </div>
     )
    

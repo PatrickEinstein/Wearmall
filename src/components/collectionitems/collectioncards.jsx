@@ -9,7 +9,7 @@ import CollectionPage from "../../pages/collection/collection";
 import { Outlet } from "react-router-dom";
 
 const Collectioncards = ({ item , addItem}) => {
-const { name, price, imageUrl} =item;
+const { name, price, imageUrl} = item;
 
  return (
  <div className="collection-item ">

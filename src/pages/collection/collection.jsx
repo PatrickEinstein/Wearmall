@@ -12,9 +12,9 @@ import { useSelector } from "react-redux";
 
 
 
-const CollectionPage = ({collection, collectionId }) => {
+const CollectionPage = ({collection, collectionId}) => {
     console.log(collection);
-    const {items, id, title} = collection;
+   const {items, id, title} = collection;
 
     return (
              <div className="collection-page">
@@ -37,3 +37,10 @@ const mapStateToProps = (state,ownProps)=> ({
 });
 export default connect(mapStateToProps)(CollectionPage);
 
+/*
+ <div className="items">
+            {
+                items.map(( item ) => (<Collectioncards key ={item.id} item={item}/> ) )
+            }
+            </div>
+*/

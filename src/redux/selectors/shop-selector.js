@@ -9,22 +9,31 @@ const COLLECTION_ID_MAP ={
     mens:5,
 };
 
-const selectShop =( state) => ( state.shop);
+const selectShop =(state) => (state.shop);
 
 export const selectCollections = createSelector(
 
-[ selectShop],
+[selectShop],
 (shop) => (shop.collections)
 
 );
 
-export const selectCollection = (collectionUrlParams)  => 
-createSelector(
-    [selectCollections],
-   (collections) => (
-        collections.find( 
-            (collection) => (collection.id === COLLECTION_ID_MAP[collectionUrlParams])
-          )) 
-);
 
- 
+export const selectCollectionsForPreview = createSelector(
+    [selectCollections],
+    (collections) => Object.keys(collections).map(key => collections[key] )
+)
+
+
+export const selectCollection = (collectionUrlParams)  => 
+{ console.log(collectionUrlParams)
+    return (createSelector(
+    [selectCollections],
+   (collections) => (collections[collectionUrlParams]) 
+))
+};
+
+ /*
+(collections) => (collections.find((collection) => (collection.id === COLLECTION_ID_MAP[collectionUrlParams]) )) 
+
+ */

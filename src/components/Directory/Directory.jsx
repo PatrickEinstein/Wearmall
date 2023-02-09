@@ -10,8 +10,8 @@ const Directory = ({sections}) => {
 return (
   <div className='directory-menu'>
     {sections.map
-    (({title, id, imageUrl}) => (
-    <MenuItem title={title.toUpperCase()} key={id} imageUrl={imageUrl} />))} 
+    (({title, id, imageUrl, linkUrl}) => (
+    <MenuItem title={title.toUpperCase()} key={id} imageUrl={imageUrl} linkUrl={linkUrl} />))} 
   </div> 
      ) 
 };
