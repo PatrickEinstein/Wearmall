@@ -3,5 +3,16 @@
    flex-direction: rows;
     align-items: center;
     padding: 10px 10px;
-    position:-webkit-sticky
+    position:-webkit-sticky;
+  }
+  .home-conatiner{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+  }
+  .carousel{
+    width:100%;
+    height:30vw;
+    display: flex;
   }

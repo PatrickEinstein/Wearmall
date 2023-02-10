@@ -64,19 +64,27 @@ signInWithPopup()
     // ...
   });
 
-  signOut(auth)
-  .then(() => {
-    console.log("signout successful");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  export const SignOut =() =>{
+
+  const auth = getAuth();
+
+     return (
+          signOut(auth)
+        .then(() => {
+          console.log("signout successful");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+     )
+  };
+  
 
 const signInWithGoogle = () => {
   signInWithPopup(auth, provider);
 };
 
-export const SignOut = () => {signOut(auth)};
+//export const SignOut = () => {signOut(auth)};
 
 export default signInWithGoogle;
 
