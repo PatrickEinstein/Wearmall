@@ -5,12 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createRoot } from 'react-dom/client';
 import store from "./redux/reducers-stores/store/store";
-import persistore from  "./redux/reducers-stores/store/store"
+//import persistore from  "./redux/reducers-stores/store/store"
 import { BrowserRouter, Routes, Route, Link, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { setCurrentUser } from "./redux/actions/setcurrentuser";
-import { PersistGate } from "redux-persist/integration/react";
-import{ persistor }from "./redux/reducers-stores/store/store";
+
+//import{ persistor }from "./redux/reducers-stores/store/store";
 
 
 
