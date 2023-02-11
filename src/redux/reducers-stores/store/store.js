@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import {userReducer}  from '../reducers/userReducer';
 import filtersReducer from '../reducers/filtersReducer';
 import CartReducer from '../reducers/cartReducer';
-import {persistStore, persistReducer} from 'redux-persist';
+
 import sessionStorage from 'redux-persist/lib/storage/session'
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
