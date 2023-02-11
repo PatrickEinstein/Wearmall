@@ -19,9 +19,9 @@ const root = createRoot(container);
 root.render(  
   <Provider store={store}>
   <BrowserRouter>
-  <PersistGate persistor={persistor}>
+  
         <App />
- </PersistGate>
+ 
   </BrowserRouter>  
 
   </Provider>

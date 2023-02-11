@@ -24,26 +24,26 @@ const userPersistConfig = {
 }
 
 const rootReducer = combineReducers({ 
- /* user: userReducer,*/ user: persistReducer(userPersistConfig, userReducer),
+  user: userReducer,/* user: persistReducer(userPersistConfig, userReducer),*/
   filters: filtersReducer,
   cart: CartReducer,
   directory: directoryReducer,
   shop: shopReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+//const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: [thunk],
   devTools: process.env.NODE_ENV !== 'production',
   
 });
 
 
-export const persistor = persistStore(store);
+//export const persistor = persistStore(store);
 
 export default store ;
 
