@@ -55,6 +55,7 @@ export const ImageCarousel = () => {
         }
         </Slider>
         </div>
+        
         </div>
        
         
